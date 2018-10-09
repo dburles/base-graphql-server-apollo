@@ -1,0 +1,56 @@
+{
+  "scripts": {
+    "test": "npm run test:eslint && npm run test:prettier",
+    "test:eslint": "eslint . --ext mjs,js",
+    "test:prettier": "prettier '**/*.{json,yml,md}' -l",
+    "build": "babel src -d dist",
+    "start": "node -r dotenv/config dist",
+    "watch": "nodemon --watch src --exec babel-node src/index.js"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "eslint-config-env": "^1.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-prettier": "^3.0.0",
+    "nodemon": "^1.18.4",
+    "prettier": "^1.14.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "env"
+    ],
+    "rules": {
+      "require-jsdoc": 0
+    },
+    "parserOptions": {
+      "sourceType": "module"
+    }
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "dependencies": {
+    "apollo-server": "^2.1.0",
+    "dotenv": "^6.0.0",
+    "graphql": "^0.13.1"
+  },
+  "babel": {
+    "presets": [
+      ["@babel/preset-env", {
+        "targets": {
+          "node": "10"
+        }
+      }]
+    ]
+  }
+}
